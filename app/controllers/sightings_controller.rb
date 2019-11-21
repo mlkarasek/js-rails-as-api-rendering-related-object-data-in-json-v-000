@@ -1,13 +1,13 @@
 class SightingsController < ApplicationController
   belongs_to :bird
-  belongs_to :location 
+  belongs_to :location
 end 
 
   def index
   sightings = Sighting.all
   render json: sightings.to_json(include: [:bird, :location])
 end
- 
+
 def show
   sighting = Sighting.find_by(id: params[:id])
   if sighting
